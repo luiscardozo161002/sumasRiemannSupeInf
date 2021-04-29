@@ -20,7 +20,7 @@
 %delta
   delta_x=(b-a)/n_rec;
 %valores de x=n+1
-  x=zero(1,n_rec+1);
+  x=(1,n_rec+1);
 %almacenamiento de los valores de X
   for k=1;length(x)
     x(k)= a +(k-1)*delta_x
