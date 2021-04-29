@@ -34,7 +34,7 @@
 %end
   
 %llamado de la funcion
- f=feval('funcion',xx);
+ f=feval('funcion',x);
 
 %calculo de las areas
   
