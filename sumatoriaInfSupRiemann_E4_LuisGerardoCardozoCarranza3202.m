@@ -9,7 +9,7 @@
 %program execution page :https://octave-online.net
 
 % Sumatoria de Riemann_supeiores_e_inferiores Ejercicio 4 f(x)=4x+5;[x=2,x=5]
-% Si se graficá su comportamiento es cuadratico.
+% Si se graficá su comportamiento es lineal.
   
 %suma de riemann para calcular el area debajo de la curva de f(x)=4x+5;[x=2,x=5]
 %sysm declarar más de una variable simbólica y no precisa de comillas simples, por lo que se utilizará con mayor frecuencia.
