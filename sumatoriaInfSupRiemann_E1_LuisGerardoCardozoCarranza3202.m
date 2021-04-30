@@ -12,21 +12,22 @@
 % Si se graficá su comportamiento es cuadratico.
   
 %suma de riemann para calcular el area debajo de la curva de f(x)=x^2+2;[1,4]
-
+%sysm declarar más de una variable simbólica y no precisa de comillas simples, por lo que se utilizará con mayor frecuencia.
 syms x 
 f = @(x) x^2 + 2
+%intervalos
 desde = 1
 hasta = 4
+%numero de rectangulos
 cant = 40
 h = (hasta - desde)/cant
-
+%calculando xi
 xi = linspace(desde, hasta, cant+2)
-
+%almacenamiento de x 
 for i = 1 : cant+1
     yi(i) = f(xi(i));
 end
-
-    
+%mostrar en pantalla   
 Rn = h* sum(double(yi(1 : cant)))
 Ln = h* sum(double(yi(2 : cant+1)))
 
