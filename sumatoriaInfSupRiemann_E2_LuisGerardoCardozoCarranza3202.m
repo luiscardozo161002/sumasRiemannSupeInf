@@ -1,4 +1,3 @@
-
 % Octave Script
 % Title			    :Sumatoria de Riemann_supeiores_e_inferiores.
 % Description		:Script para desarrrollar el ejercicio 2 de la actividad Sumatoria de Riemann_supeiores_e_inferiores.
