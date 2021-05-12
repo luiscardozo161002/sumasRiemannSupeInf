@@ -5,63 +5,44 @@
 % Date			:20210429
 % sion		        :1
 % Usage			:octave> /path/Sumatoria de Riemann_supeiores_e_inferiores_Luis Gerardo Cardozo Carranza_3202
-% Notes			:Requiere aplicacion octave-online usar en consola preferentemente. 
-%program execution page :https://octave-online.net
+% Notes			:Requiere aplicacion octave usar en consola preferentemente. 
 
 % Sumatoria de Riemann_supeiores_e_inferiores Ejercicio 3 f(x)=-x+1;[-2,3]
-% Si se graficá su comportamiento es lineal.
-  
-%suma de riemann para calcular el area debajo de la curva de f(x)=-x+1;[-2,3]
-%sysm declarar más de una variable simbólica y no precisa de comillas simples, por lo que se utilizará con mayor frecuencia.
-syms x 
-f = @(x) -x+1
-%intervalos
-desde = -2
-hasta = 3
-%numero de rectangulos
-cant = 40
-h = (hasta - desde)/cant
-%calculando xi
-xi = linspace(desde, hasta, cant+2)
-%almacenamiento de x 
-for i = 1 : cant+1
-    yi(i) = f(xi(i));
-end
-%mostrar en pantalla   
-Rn = h* sum(double(yi(1 : cant)))
-Ln = h* sum(double(yi(2 : cant+1)))
+%limpia la pantalla y las variables.
+clc, clear
+%define los intervalos y el numero de rectangulos.
+a = -2;
+b =  3;
+n = 100;
+%determina la longitud de la base o el incremento de x.
+base = (b-a)/n;
+%definicion de la funcion.
+x =a:base:(b-base);
+%y esta representada por la variable altura
+altura=(-x+1);
+%calcula el valor de cada uno de los rectangulos.
+area = base*altura;
+%estable    la    linea   que   forma  la funcion
+x2 = linspace(-2,3,100);
+y2 = (-x+1);
+%inicio del  intervalo, fin del intervalo, numero 
+%de rectangulos.
+xa = linspace(-2,3,100);
+yab =(-x+1);
 
+%dibuja una  grafica de barras una a lado de otra 
+%sin espacios
+g = bar(xa,yab,'histc');
 
-ezplot(f,[desde hasta]);
-hold on;
+%permite continuar  graficando  despues de que ya 
+%exista un grafica trazada
+hold on
 
-plot([xi(1) xi(end)],[0 0],'b')
+%Grafica la funcion
+plot(x2,y2);
 
-%canidad rectangulos
-for i = 1 : cant+1
-    if(f(xi(i)) >= 0)
-        %Rectangulo inferior
-        plot([xi(i) xi(i)],[0 double(f(fminbnd(f,xi(i),xi(i+1))))],'g')
-        plot([xi(i) xi(i+1)],[double(f(fminbnd(f,xi(i),xi(i+1)))) double(f(fminbnd(f,xi(i),xi(i+1))))],'g')
-        plot([xi(i+1) xi(i+1)],[double(f(fminbnd(f,xi(i),xi(i+1)))) 0],'g')
-    
-        g = @(x) -f(x);
-    
-        %Rectangulo superior
-        plot([xi(i) xi(i)],[0 double(f(fminbnd(g,xi(i),xi(i+1))))],'r')
-        plot([xi(i) xi(i+1)],[double(f(fminbnd(g,xi(i),xi(i+1)))) double(f(fminbnd(g,xi(i),xi(i+1))))],'r')
-        plot([xi(i+1) xi(i+1)],[double(f(fminbnd(g,xi(i),xi(i+1)))) 0],'r')
-    else
-        %Rectangulo inferior
-        plot([xi(i) xi(i)],[0 double(f(fminbnd(f,xi(i),xi(i+1))))],'r')
-        plot([xi(i) xi(i+1)],[double(f(fminbnd(f,xi(i),xi(i+1)))) double(f(fminbnd(f,xi(i),xi(i+1))))],'r')
-        plot([xi(i+1) xi(i+1)],[double(f(fminbnd(f,xi(i),xi(i+1)))) 0],'r')
-    
-        g = @(x) -f(x);
-    
-        %Rectangulo superior
-        plot([xi(i) xi(i)],[0 double(f(fminbnd(g,xi(i),xi(i+1))))],'g')
-        plot([xi(i) xi(i+1)],[double(f(fminbnd(g,xi(i),xi(i+1)))) double(f(fminbnd(g,xi(i),xi(i+1))))],'g')
-        plot([xi(i+1) xi(i+1)],[double(f(fminbnd(g,xi(i),xi(i+1)))) 0],'g')
-    end
-end
+%Asigna un nombre a la grafica 
+title("Ejercicio 3 f(x)=-x+1;[-2,3]");
+
+%ajusta la grafica a los datos.
+axis tight
