@@ -5,11 +5,10 @@
 % Date			:20210429
 % sion		        :1
 % Usage			:octave> /path/Sumatoria de Riemann_supeiores_e_inferiores_Luis Gerardo Cardozo Carranza_3202
-% Notes			:Requiere aplicacion octave-online usar en consola preferentemente. 
-%program execution page :https://octave-online.net
+% Notes			:Requiere aplicacion octave usar en consola preferentemente. 
 
 % Sumatoria de Riemann_supeiores_e_inferiores Ejercicio 5 f(x)=3(1/35)(x)^2;[-3,3]
-%Limpiar variables.
+
 %limpia la pantalla y las variables.
 clc, clear
 %define los intervalos y el numero de rectangulos.
