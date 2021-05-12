@@ -1,67 +1,50 @@
 % Octave Script
-% Title			:Sumatoria de Riemann_supeiores_e_inferiores.
+% Title			    :Sumatoria de Riemann_supeiores_e_inferiores.
 % Description		:Script para desarrrollar el ejericio 1 de la actividad Sumatoria de Riemann_supeiores_e_inferiores.
-% Author		:Luis Gerardo Cardozo Carranza (Gerard_CRS) luiscardozo161002@gmail.com
-% Date			:20210429
-% sion		        :1
-% Usage			:octave> /path/Sumatoria de Riemann_supeiores_e_inferiores_Luis Gerardo Cardozo Carranza_3202
-% Notes			:Requiere aplicacion octave-online usar en consola preferentemente. 
+% Author		    :Luis Gerardo Cardozo Carranza (Gerard_CRS) luiscardozo161002@gmail.com
+% Date			    :20210429
+% sion		      :1
+% Usage			    :octave> /path/Sumatoria de Riemann_supeiores_e_inferiores_Luis Gerardo Cardozo Carranza_3202
+% Notes			    :Requiere aplicacion octave-online usar en consola preferentemente. 
 %program execution page :https://octave-online.net
 
 % Sumatoria de Riemann_supeiores_e_inferiores Ejercicio 1 f(x)=x^2+2;[1,4]
-% Si se graficá su comportamiento es cuadratico.
-  
-%suma de riemann para calcular el area debajo de la curva de f(x)=x^2+2;[1,4]
-%sysm declarar más de una variable simbólica y no precisa de comillas simples, por lo que se utilizará con mayor frecuencia.
-syms x 
-f = @(x) x^2 + 2
-%intervalos
-desde = 1
-hasta = 4
-%numero de rectangulos
-cant = 40
-h = (hasta - desde)/cant
-%calculando xi
-xi = linspace(desde, hasta, cant+2)
-%almacenamiento de x 
-for i = 1 : cant+1
-    yi(i) = f(xi(i));
-end
-%mostrar en pantalla   
-Rn = h* sum(double(yi(1 : cant)))
-Ln = h* sum(double(yi(2 : cant+1)))
+%Limpiar variables.
+%limpia la pantalla y las variables.
+clc, clear
+%define los intervalos y el numero de rectangulos.
+a = 1;
+b = 4;
+n = 100;
+%determina la longitud de la base o el incremento de x.
+base = (b-a)/n;
+%definicion de la funcion.
+x =a:base:(b-base);
+%y esta representada por la variable altura
+altura=((x.^2)+2);
+%calcula el valor de cada uno de los rectangulos.
+area = base*altura;
+%estable    la    linea   que   forma  la funcion
+x2 = linspace(1,4,100);
+y2 = ((x.^2)+2);
+%inicio del  intervalo, fin del intervalo, numero 
+%de rectangulos.
+xa = linspace(1,4,100);
+yab =((x.^2)+2);
 
+%dibuja una  grafica de barras una a lado de otra 
+%sin espacios
+g = bar(xa,yab,'histc');
 
-ezplot(f,[desde hasta]);
-hold on;
+%permite continuar  graficando  despues de que ya 
+%exista un grafica trazada
+hold on
 
-plot([xi(1) xi(end)],[0 0],'b')
+%Grafica la funcion
+plot(x2,y2);
 
-%canidad rectangulos
-for i = 1 : cant+1
-    if(f(xi(i)) >= 0)
-        %Rectangulo inferior
-        plot([xi(i) xi(i)],[0 double(f(fminbnd(f,xi(i),xi(i+1))))],'g')
-        plot([xi(i) xi(i+1)],[double(f(fminbnd(f,xi(i),xi(i+1)))) double(f(fminbnd(f,xi(i),xi(i+1))))],'g')
-        plot([xi(i+1) xi(i+1)],[double(f(fminbnd(f,xi(i),xi(i+1)))) 0],'g')
-    
-        g = @(x) -f(x);
-    
-        %Rectangulo superior
-        plot([xi(i) xi(i)],[0 double(f(fminbnd(g,xi(i),xi(i+1))))],'r')
-        plot([xi(i) xi(i+1)],[double(f(fminbnd(g,xi(i),xi(i+1)))) double(f(fminbnd(g,xi(i),xi(i+1))))],'r')
-        plot([xi(i+1) xi(i+1)],[double(f(fminbnd(g,xi(i),xi(i+1)))) 0],'r')
-    else
-        %Rectangulo inferior
-        plot([xi(i) xi(i)],[0 double(f(fminbnd(f,xi(i),xi(i+1))))],'r')
-        plot([xi(i) xi(i+1)],[double(f(fminbnd(f,xi(i),xi(i+1)))) double(f(fminbnd(f,xi(i),xi(i+1))))],'r')
-        plot([xi(i+1) xi(i+1)],[double(f(fminbnd(f,xi(i),xi(i+1)))) 0],'r')
-    
-        g = @(x) -f(x);
-    
-        %Rectangulo superior
-        plot([xi(i) xi(i)],[0 double(f(fminbnd(g,xi(i),xi(i+1))))],'g')
-        plot([xi(i) xi(i+1)],[double(f(fminbnd(g,xi(i),xi(i+1)))) double(f(fminbnd(g,xi(i),xi(i+1))))],'g')
-        plot([xi(i+1) xi(i+1)],[double(f(fminbnd(g,xi(i),xi(i+1)))) 0],'g')
-    end
-end
+%Asigna un nombre a la grafica 
+title("Ejericicio 1 f(x)=x^2+2;[1,4]");
+
+%ajusta la grafica a los datos.
+axis tight
