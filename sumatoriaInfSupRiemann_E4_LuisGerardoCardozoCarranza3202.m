@@ -9,59 +9,42 @@
 %program execution page :https://octave-online.net
 
 % Sumatoria de Riemann_supeiores_e_inferiores Ejercicio 4 f(x)=4x+5;[x=2,x=5]
-% Si se graficá su comportamiento es lineal.
-  
-%suma de riemann para calcular el area debajo de la curva de f(x)=4x+5;[x=2,x=5]
-%sysm declarar más de una variable simbólica y no precisa de comillas simples, por lo que se utilizará con mayor frecuencia.
-syms x 
-f = @(x) 4x + 5
-%intervalos
-desde =2 
-hasta =5
-%numero de rectangulos
-cant = 40
-h = (hasta - desde)/cant
-%calculando xi
-xi = linspace(desde, hasta, cant+2)
-%almacenamiento de x 
-for i = 1 : cant+1
-    yi(i) = f(xi(i));
-end
-%mostrar en pantalla   
-Rn = h* sum(double(yi(1 : cant)))
-Ln = h* sum(double(yi(2 : cant+1)))
+%Limpiar variables.
+%limpia la pantalla y las variables.
+clc, clear
+%define los intervalos y el numero de rectangulos.
+a = 2;
+b = 5;
+n = 100;
+%determina la longitud de la base o el incremento de x.
+base = (b-a)/n;
+%definicion de la funcion.
+x =a:base:(b-base);
+%y esta representada por la variable altura
+altura=(4*x)+5;
+%calcula el valor de cada uno de los rectangulos.
+area = base*altura;
+%estable    la    linea   que   forma  la funcion
+x2 = linspace(2,5,100);
+y2 = (4*x)+5;
+%inicio del  intervalo, fin del intervalo, numero 
+%de rectangulos.
+xa = linspace(2,5,100);
+yab =(4*x)+5;
 
+%dibuja una  grafica de barras una a lado de otra 
+%sin espacios
+g = bar(xa,yab,'histc');
 
-ezplot(f,[desde hasta]);
-hold on;
+%permite continuar  graficando  despues de que ya 
+%exista un grafica trazada
+hold on
 
-plot([xi(1) xi(end)],[0 0],'b')
+%Grafica la funcion
+plot(x2,y2);
 
-%canidad rectangulos
-for i = 1 : cant+1
-    if(f(xi(i)) >= 0)
-        %Rectangulo inferior
-        plot([xi(i) xi(i)],[0 double(f(fminbnd(f,xi(i),xi(i+1))))],'g')
-        plot([xi(i) xi(i+1)],[double(f(fminbnd(f,xi(i),xi(i+1)))) double(f(fminbnd(f,xi(i),xi(i+1))))],'g')
-        plot([xi(i+1) xi(i+1)],[double(f(fminbnd(f,xi(i),xi(i+1)))) 0],'g')
-    
-        g = @(x) -f(x);
-    
-        %Rectangulo superior
-        plot([xi(i) xi(i)],[0 double(f(fminbnd(g,xi(i),xi(i+1))))],'r')
-        plot([xi(i) xi(i+1)],[double(f(fminbnd(g,xi(i),xi(i+1)))) double(f(fminbnd(g,xi(i),xi(i+1))))],'r')
-        plot([xi(i+1) xi(i+1)],[double(f(fminbnd(g,xi(i),xi(i+1)))) 0],'r')
-    else
-        %Rectangulo inferior
-        plot([xi(i) xi(i)],[0 double(f(fminbnd(f,xi(i),xi(i+1))))],'r')
-        plot([xi(i) xi(i+1)],[double(f(fminbnd(f,xi(i),xi(i+1)))) double(f(fminbnd(f,xi(i),xi(i+1))))],'r')
-        plot([xi(i+1) xi(i+1)],[double(f(fminbnd(f,xi(i),xi(i+1)))) 0],'r')
-    
-        g = @(x) -f(x);
-    
-        %Rectangulo superior
-        plot([xi(i) xi(i)],[0 double(f(fminbnd(g,xi(i),xi(i+1))))],'g')
-        plot([xi(i) xi(i+1)],[double(f(fminbnd(g,xi(i),xi(i+1)))) double(f(fminbnd(g,xi(i),xi(i+1))))],'g')
-        plot([xi(i+1) xi(i+1)],[double(f(fminbnd(g,xi(i),xi(i+1)))) 0],'g')
-    end
-end
+%Asigna un nombre a la grafica 
+title("Ejercicio 4 f(x)=4x+5;[x=2,x=5]");
+
+%ajusta la grafica a los datos.
+axis tight
