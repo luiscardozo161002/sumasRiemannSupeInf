@@ -5,8 +5,7 @@
 % Date			:20210429
 % sion		        :1
 % Usage			:octave> /path/Sumatoria de Riemann_supeiores_e_inferiores_Luis Gerardo Cardozo Carranza_3202
-% Notes			:Requiere aplicacion octave-online usar en consola preferentemente. 
-%program execution page :https://octave-online.net
+% Notes			:Requiere aplicacion octave usar en consola preferentemente. 
 
 % Sumatoria de Riemann_supeiores_e_inferiores Ejercicio 4 f(x)=4x+5;[x=2,x=5]
 %Limpiar variables.
