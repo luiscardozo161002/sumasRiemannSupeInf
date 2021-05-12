@@ -8,7 +8,7 @@
 % Notes			:Requiere aplicacion octave usar en consola preferentemente. 
 
 % Sumatoria de Riemann_supeiores_e_inferiores Ejercicio 4 f(x)=4x+5;[x=2,x=5]
-%Limpiar variables.
+
 %limpia la pantalla y las variables.
 clc, clear
 %define los intervalos y el numero de rectangulos.
